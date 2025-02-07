@@ -1,9 +1,14 @@
+import base64
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import json
 import requests
+import rasterio
+import numpy as np
 
 
 def map_fig(russia_geojson, points_geojson):
@@ -35,6 +40,33 @@ def map_fig(russia_geojson, points_geojson):
             descriptions.append(desc)
             gauge_ids.append(feature['properties']['gauge_id'])
 
+    # with rasterio.open('geopandas/ai360_climateviz/lvl_pred_maps/19016/2024-10_7.17_depth.tiff') as src:
+    #     # Чтение данных
+    #     raster = src.read()  # Предполагаем, что у нас один канал
+        
+    #     # Получение координат
+    #     height = src.height
+    #     width = src.width
+    #     cols, rows = np.meshgrid(np.arange(width), np.arange(height))
+    #     xs, ys = rasterio.transform.xy(src.transform, rows, cols)
+        
+    #     # Создание DataFrame
+    #     df = pd.DataFrame({
+    #         'x': xs.ravel(),
+    #         'y': ys.ravel(),
+    #         'value': raster.ravel()
+    #     })
+
+    # fig.add_trace(px.density_mapbox(df, 
+    #     lat='x', 
+    #     lon='y', 
+    #     z='value', 
+    #     radius=10,
+    #     center=dict(lat=df['x'].mean(), lon=df['y'].mean()), 
+    #     zoom=10,
+    #     mapbox_style="open-street-map"))
+
+    
     # Добавление точек из GeoJSON
     fig.add_trace(go.Scattermapbox(
         lat=lats,
