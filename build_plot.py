@@ -7,7 +7,7 @@ import pandas as pd
 from dash.dependencies import Input, Output
 
 def show_plot(gauge_id):
-	data = pd.read_csv(f"https://raw.githubusercontent.com/BlinovArtemii/group11/refs/heads/master/ai360_climateviz/lvl_obs/{gauge_id}.csv")
+	data = pd.read_csv(f"https://raw.githubusercontent.com/BlinovArtemii/aigroup11/refs/heads/master/ai360_climateviz/lvl_obs/{gauge_id}.csv")
 
 	data['date'] = pd.to_datetime(data['date'])
 	data['day_of_year'] = data['date'].dt.dayofyear

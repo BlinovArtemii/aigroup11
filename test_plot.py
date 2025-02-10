@@ -7,8 +7,8 @@ import pandas as pd
 from dash.dependencies import Input, Output
 
 def show_plot(gauge_id, name="placeholder"):
-  data = pd.read_csv(f"geopandas/ai360_climateviz/lvl_obs/{gauge_id}.csv")
-  data_pred = pd.read_csv(f"geopandas/ai360_climateviz/lvl_pred_csv/{gauge_id}.csv")
+  data = pd.read_csv(f"https://raw.githubusercontent.com/BlinovArtemii/aigroup11/refs/heads/master/ai360_climateviz/lvl_obs/{gauge_id}.csv")
+  data_pred = pd.read_csv(f"https://raw.githubusercontent.com/BlinovArtemii/aigroup11/refs/heads/master/ai360_climateviz/lvl_pred_csv/{gauge_id}.csv")
   data=data[(data["lvl_sm"].notnull()) & (data["lvl_sm"]!=0)]
   data_pred_copy=data_pred
   data_pred=data_pred[(data_pred["lvl_sm_sim"].notnull())]

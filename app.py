@@ -14,8 +14,8 @@ russia_geojson = json.loads(response_russia.text)
 
 # Загрузка GeoJSON данных с точками
 # Замените URL на ваш реальный URL или путь к файлу
-with open("geopandas/ai360_climateviz/gauge_stations.geojson", 'r', encoding='utf-8') as file:
-    points_geojson = json.load(file)
+response = requests.get("https://raw.githubusercontent.com/BlinovArtemii/aigroup11/refs/heads/master/ai360_climateviz/gauge_stations.geojson")
+points_geojson = json.loads(response.text)
 
 # Инициализация приложения Dash
 app = dash.Dash(__name__)
